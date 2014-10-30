@@ -1,0 +1,6 @@
+<module>
+    <!-- Inherit the default widget set -->
+    <inherits name="com.vaadin.terminal.gwt.DefaultWidgetSet"/>
+
+    <inherits name="org.vaadin.addons.serverpush.ServerPushWidgetset" />
+</module>

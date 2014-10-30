@@ -1,0 +1,91 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <context-param>
+        <description>Vaadin production mode</description>
+        <param-name>productionMode</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>myservlet</servlet-name>
+        <servlet-class>
+            com.vaadin.terminal.gwt.server.ApplicationServlet
+        </servlet-class>
+        <init-param>
+            <param-name>application</param-name>
+            <param-value>org.utkuozdemir.vaadin6pushsample.SampleApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>widgetset</param-name>
+            <param-value>SampleWidgetSet</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myservlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>AtmosphereServlet</description>
+        <servlet-name>AtmosphereServlet</servlet-name>
+        <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+        <init-param>
+            <!-- prevent deadlocks -->
+            <param-name>org.atmosphere.disableOnStateEvent</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--<init-param>-->
+        <!--<param-name>org.atmosphere.useWebSocket</param-name>-->
+        <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+        <!--<param-name>org.atmosphere.useNative</param-name>-->
+        <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+        <!--<param-name>org.atmosphere.useBlocking</param-name>-->
+        <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <load-on-startup>1</load-on-startup>
+        <!--Uncomment if you want to use Servlet 3.0 Async Support-->
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet>
+        <servlet-name>gui</servlet-name>
+        <servlet-class>org.vaadin.addons.serverpush.ServerPushApplicationServlet</servlet-class>
+        <init-param>
+            <param-name>application</param-name>
+            <param-value>org.utkuozdemir.vaadin6pushsample.SampleApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>productionMode</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <!--<init-param>
+            <param-name>codeBasePath</param-name>
+            <param-value>/gui</param-value>
+        </init-param>-->
+        <init-param>
+            <description>Application widgetset</description>
+            <param-name>widgetset</param-name>
+            <param-value>SampleWidgetSet</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AtmosphereServlet</servlet-name>
+        <url-pattern>/server-push</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>gui</servlet-name>
+        <url-pattern>/gui/*</url-pattern>
+    </servlet-mapping>
+</web-app>
