@@ -165,20 +165,20 @@
                     <!--</dependency>-->
                 <!--</dependencies>-->
             <!--</plugin>-->
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>1.0.2</version>
-                <executions>
-                    <execution>
-                        <configuration>
-                        </configuration>
-                        <goals>
-                            <goal>update-widgetset</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.vaadin</groupId>-->
+                <!--<artifactId>vaadin-maven-plugin</artifactId>-->
+                <!--<version>1.0.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<configuration>-->
+                        <!--</configuration>-->
+                        <!--<goals>-->
+                            <!--<goal>update-widgetset</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
